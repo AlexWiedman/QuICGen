@@ -333,6 +333,10 @@ def r2calc(self):
         self.Z20_untwisted = self.Z20
         self.Z2s_untwisted = self.Z2s
         self.Z2c_untwisted = self.Z2c
+
+        self.B20_untwisted = self.B20
+        self.B2s_untwisted = self.B2s
+        self.B2c_untwisted = self.B2c
     else:
         angle = -self.helicity * self.nfp * self.varphi
         sinangle = np.sin(angle)
@@ -340,6 +344,7 @@ def r2calc(self):
         self.X20_untwisted = self.X20
         self.Y20_untwisted = self.Y20
         self.Z20_untwisted = self.Z20
+        self.B20_untwisted = self.B20
         sinangle = np.sin(2*angle)
         cosangle = np.cos(2*angle)
         self.X2s_untwisted = self.X2s *   cosangle  + self.X2c * sinangle
@@ -348,6 +353,8 @@ def r2calc(self):
         self.Y2c_untwisted = self.Y2s * (-sinangle) + self.Y2c * cosangle
         self.Z2s_untwisted = self.Z2s *   cosangle  + self.Z2c * sinangle
         self.Z2c_untwisted = self.Z2s * (-sinangle) + self.Z2c * cosangle
+        self.B2s_untwisted = self.B2s *   cosangle  + self.B2c * sinangle
+        self.B2c_untwisted = self.B2s * (-sinangle) + self.B2c * cosangle
 
     # O(r^2) diagnostics:
     #self.mercier()
