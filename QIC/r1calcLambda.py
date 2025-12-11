@@ -12,7 +12,7 @@ def _residual(self, x):
     sigma = np.copy(x)
     sigma[0] = self.sigma0
     iota = x[0]
-    iotaN = iota + self.helicity #* self.nfp
+    iotaN = iota + self.helicity * self.nfp
 
     L2 = np.power(self.X1c,2) + np.power(self.Y1c,2)
     beta = -1 * self.Bbar / (self.B0 * L2)
@@ -35,7 +35,7 @@ def _jacobian(self, x):
     sigma = np.copy(x)
     sigma[0] = self.sigma0
     iota = x[0]
-    iotaN = iota + self.helicity #* self.nfp
+    iotaN = iota + self.helicity * self.nfp
 
     X1cP = np.matmul(self.d_d_varphi, self.X1c)
     Y1cP = np.matmul(self.d_d_varphi, self.Y1c)
@@ -60,7 +60,7 @@ def solve_sigma_equation(self):
 
     self.sigma = newton(self._residual, x0, jac=self._jacobian)
     self.iota = self.sigma[0] 
-    self.iotaN = self.sigma[0] + self.helicity
+    self.iotaN = self.sigma[0] + self.helicity * self.nfp
     self.sigma[0] = self.sigma0
 
 def _determine_helicity_fs(self):
@@ -126,7 +126,7 @@ def _determine_helicity_centroid(self):
             counter += quadrant[j+1] - quadrant[j]
 
     counter *= self.spsi * self.sG
-    self.helicity = counter / 4
+    self.helicity = -counter / 4
 
 def r1_diagnostics(self):
     """

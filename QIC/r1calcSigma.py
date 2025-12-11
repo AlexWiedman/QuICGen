@@ -53,10 +53,9 @@ def solve_sigma_equation(self):
     self.sigma[0] = self.sigma0
     
 
-
-def _determine_helicity(self):
+def _determine_helicity_fs(self):
     """
-    To the best of my understanding, any helicity calculation will be identical to that of 
+    To the best of my understanding, the helicity calculation will be identical to that of 
     pyQSC, if we still have information on the normal vector. We could also use one of the alternate vectors I suppose.
     """
     quadrant = np.zeros(self.nphi + 1)
@@ -71,6 +70,40 @@ def _determine_helicity(self):
                 quadrant[j] = 2
             else:
                 quadrant[j] = 3
+    quadrant[self.nphi] = quadrant[0]
+
+    counter = 0
+    for j in range(self.nphi):
+        if quadrant[j] == 4 and quadrant[j+1] == 1:
+            counter += 1
+        elif quadrant[j] == 1 and quadrant[j+1] == 4:
+            counter -= 1
+        else:
+            counter += quadrant[j+1] - quadrant[j]
+
+    counter *= self.spsi * self.sG
+    self.helicity = counter / 4
+
+def _determine_helicity_centroid(self):
+    """
+    This helicity calculation is based on changes in sign of X1c and Y1c
+    This will only work for the centroid frame, or other frames where a vector will point outwards radially
+    It is not analagous to the helicity of the FS frame
+    """
+
+    quadrant = np.zeros(self.nphi + 1)
+    for j in range(self.nphi):
+        if self.X1c[j] >= 0:
+            if self.Y1c[j] >= 0:
+                quadrant[j] = 1
+            else:
+                quadrant[j] = 4
+        else:
+            if self.Y1c[j] >= 0:
+                quadrant[j] = 2
+            else:
+                quadrant[j] = 3
+
     quadrant[self.nphi] = quadrant[0]
 
     counter = 0

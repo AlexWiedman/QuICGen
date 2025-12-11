@@ -183,5 +183,5 @@ def to_gvec_theta_phi(self, filename, r=0.1, ntheta=20):
     xyz[:,:,2] = z_2D_plot_new
 
 
-    gvec.scripts.quasr.convert_quasr(xyz, nfp, filename, format='toml')
+    gvec.gframe.construct_gframe_from_surface(xyz, nfp, tolerance_output=1e-4, cutoff_gframe=8, filename=filename, format='toml')
     gvec.scripts.quasr.save_xyz(xyz, nfp, filename + "xyz_save.nc")
