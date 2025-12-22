@@ -13,9 +13,7 @@ class QIC():
     from .r_singularity import calculate_r_singularity
 
     def __init__(self, rc, zs, rs = None, zc = None, nfp = 1, X1c = None, Y1c = None, sigma0 = 0., B0 = None, I2 = 0
-                 , sG = 1, spsi = 1, nphi = 61, B2s=None, B2c=None, p2=0., order="r1", frame="centroid",
-                 d_cvals=[], d_svals=[], alpha_cvals=[0.], alpha_svals=[0.], phi_shift=0, # pyQIC conditions
-                 omn = False, omn_method='buffer', k_buffer=1, p_buffer=2, delta  = np.pi/5, k_second_order_SS = 0):
+                 , sG = 1, spsi = 1, nphi = 61, B2s=None, B2c=None, p2=0., order="r1", frame="centroid"):
         
         if rs == None and zc == None:
             nfourier = np.max([len(rc), len(zs)])
@@ -78,16 +76,6 @@ class QIC():
         self.p2 = p2
         self.order = order
         self.min_R0_threshold = 0.3
-
-        ## pyQIC conditions
-        self.omn = omn
-        self.delta  = min(abs(delta),0.95*np.pi/nfp)
-        self.omn_method = omn_method
-        self.k_buffer = k_buffer
-        self.p_buffer = p_buffer
-        self.k_second_order_SS = k_second_order_SS
-        #self.d_over_curvature = d_over_curvature
-        #self.d_over_curvature_cvals = d_over_curvature_cvals
 
         self.calculate()
     
