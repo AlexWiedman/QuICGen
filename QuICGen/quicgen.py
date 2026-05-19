@@ -3,7 +3,7 @@ import numpy as np
 class QIC():
 
     from QuICGen.r1calcLambda import _residual, _jacobian, solve_sigma_equation, \
-        _determine_helicity_centroid, r1_diagnostics, _determine_helicity_fs, _determine_helicity_centroid_final
+        _determine_helicity_centroid, r1_diagnostics, _determine_helicity_centroid_final
     from .r2calc import r2calc
     from QuICGen.init_axis import init_axis, convert_to_spline
     from QuICGen.grad_B_tensor import calculate_grad_B_tensor
