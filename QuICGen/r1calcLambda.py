@@ -108,7 +108,7 @@ def r1_diagnostics(self):
     self.Y1s = -beta * (self.X1c + self.Y1c * self.sigma)
     self.X1s = -beta * (np.multiply(-1, self.Y1c) + self.X1c * self.sigma)
 
-    self._determine_helicity_centroid_final()
+    self._determine_helicity_centroid()
     self.iota = self.iotaN + self.helicity * self.nfp
 
     self.B1c = (self.X1c * self.k1 + self.Y1c * self.k2) * self.B0
