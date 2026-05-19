@@ -1,5 +1,5 @@
 """
-Compare output from QICalculator to pyQSC.
+Compare output from QuICGen to pyQSC.
 """
 
 import unittest
@@ -37,11 +37,11 @@ def compare_to_fortran_r1(filename):
     sG = dat.sG
     spsi = dat.spsi
 
-    def compare_field(qsc_field, qic_field, rtol=1e-9, atol=1e-9):
-        logger('max difference: {}'.format(np.max(np.abs(qsc_field - qic_field))))
-        np.testing.assert_allclose(qsc_field, qic_field, rtol=rtol, atol=atol)
+    def compare_field(qsc_field, QuICGen_field, rtol=1e-9, atol=1e-9):
+        logger('max difference: {}'.format(np.max(np.abs(qsc_field - QuICGen_field))))
+        np.testing.assert_allclose(qsc_field, QuICGen_field, rtol=rtol, atol=atol)
 
-    iso = QIC(QSrc, QSzs, nfp = nfp, sigma0 = sigma0, X1c = QSx1c, Y1c=QSy1c, B0=QSB0, nphi=nphi, sG=sG, spsi=spsi)
+    iso = QuICGen(QSrc, QSzs, nfp = nfp, sigma0 = sigma0, X1c = QSx1c, Y1c=QSy1c, B0=QSB0, nphi=nphi, sG=sG, spsi=spsi)
     iso.calculate()
 
     compare_field(QSx1s, iso.X1s)
