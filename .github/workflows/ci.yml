@@ -46,7 +46,7 @@ jobs:
     - name: env after adding python
       run: env
 
-    - name: Install QIC
+    - name: Install QuICGen
       run: pip install .
     
     - name: Download and Install pyQSC
