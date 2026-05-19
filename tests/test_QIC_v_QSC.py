@@ -54,7 +54,7 @@ def compare_to_fortran_r1(filename):
     compare_field(dat.sigma, iso.sigma)
 
 
-class QIC_v_QSC(unittest.TestCase):
+class QuICGen_v_QSC(unittest.TestCase):
     def test_sec_5_1(self):
         nphi = 63
         stel_qsc = Qsc.from_paper('r1 section 5.1', nphi=nphi)
@@ -67,21 +67,21 @@ class QIC_v_QSC(unittest.TestCase):
         zs=stel_qsc.zs
 
         nfp = stel_qsc.nfp
-        stel_qic = QIC(rc, zs, nfp = nfp, nphi=nphi)
-        p = stel_qic.frame_p_cartesian
-        q = stel_qic.frame_q_cartesian
-        n = stel_qic.normal_cartesian
-        b = stel_qic.binormal_cartesian
+        stel_QuICGen = QuICGen(rc, zs, nfp = nfp, nphi=nphi)
+        p = stel_QuICGen.frame_p_cartesian
+        q = stel_QuICGen.frame_q_cartesian
+        n = stel_QuICGen.normal_cartesian
+        b = stel_QuICGen.binormal_cartesian
 
         X1c, Y1c, X1s, Y1s = get_centroid_X1_Y1(p, q, n, b, [X1cfs, X1sfs], [Y1cfs, Y1sfs])
 
-        stel_qic = QIC(rc, zs, B0=np.full(nphi, stel_qsc.B0), X1c=X1c, Y1c=Y1c, nfp = nfp, nphi = nphi, sigma0=0)
+        stel_QuICGen = QuICGen(rc, zs, B0=np.full(nphi, stel_qsc.B0), X1c=X1c, Y1c=Y1c, nfp = nfp, nphi = nphi, sigma0=0)
 
-        np.testing.assert_allclose(X1s, stel_qic.X1s)
-        np.testing.assert_allclose(Y1s, stel_qic.Y1s)
-        np.testing.assert_allclose(np.mean(stel_qic.B0), stel_qsc.B0)
-        np.testing.assert_allclose(np.mean(stel_qic.B1c), stel_qsc.etabar)
-        np.testing.assert_allclose(stel_qsc.iota, stel_qic.iota)
+        np.testing.assert_allclose(X1s, stel_QuICGen.X1s)
+        np.testing.assert_allclose(Y1s, stel_QuICGen.Y1s)
+        np.testing.assert_allclose(np.mean(stel_QuICGen.B0), stel_qsc.B0)
+        np.testing.assert_allclose(np.mean(stel_QuICGen.B1c), stel_qsc.etabar)
+        np.testing.assert_allclose(stel_qsc.iota, stel_QuICGen.iota)
 
     def test_sec_5_2(self):
         nphi = 63
@@ -95,21 +95,21 @@ class QIC_v_QSC(unittest.TestCase):
         zs=stel_qsc.zs
 
         nfp = stel_qsc.nfp
-        stel_qic = QIC(rc, zs, nfp = nfp, nphi=nphi)
-        p = stel_qic.frame_p_cartesian
-        q = stel_qic.frame_q_cartesian
-        n = stel_qic.normal_cartesian
-        b = stel_qic.binormal_cartesian
+        stel_QuICGen = QuICGen(rc, zs, nfp = nfp, nphi=nphi)
+        p = stel_QuICGen.frame_p_cartesian
+        q = stel_QuICGen.frame_q_cartesian
+        n = stel_QuICGen.normal_cartesian
+        b = stel_QuICGen.binormal_cartesian
 
         X1c, Y1c, X1s, Y1s = get_centroid_X1_Y1(p, q, n, b, [X1cfs, X1sfs], [Y1cfs, Y1sfs])
 
-        stel_qic = QIC(rc, zs, B0=np.full(nphi, stel_qsc.B0), X1c=X1c, Y1c=Y1c, nfp = nfp, nphi = nphi, sigma0=stel_qsc.sigma0)
+        stel_QuICGen = QuICGen(rc, zs, B0=np.full(nphi, stel_qsc.B0), X1c=X1c, Y1c=Y1c, nfp = nfp, nphi = nphi, sigma0=stel_qsc.sigma0)
 
-        np.testing.assert_allclose(X1s, stel_qic.X1s, atol=atol)
-        np.testing.assert_allclose(Y1s, stel_qic.Y1s, atol=atol)
-        np.testing.assert_allclose(np.mean(stel_qic.B0), stel_qsc.B0)
-        np.testing.assert_allclose(np.mean(stel_qic.B1c), stel_qsc.etabar)
-        np.testing.assert_allclose(stel_qsc.iota, stel_qic.iota, atol=atol) 
+        np.testing.assert_allclose(X1s, stel_QuICGen.X1s, atol=atol)
+        np.testing.assert_allclose(Y1s, stel_QuICGen.Y1s, atol=atol)
+        np.testing.assert_allclose(np.mean(stel_QuICGen.B0), stel_qsc.B0)
+        np.testing.assert_allclose(np.mean(stel_QuICGen.B1c), stel_qsc.etabar)
+        np.testing.assert_allclose(stel_qsc.iota, stel_QuICGen.iota, atol=atol) 
     
     def test_precise_QA(self):
         nphi = 63
@@ -123,22 +123,22 @@ class QIC_v_QSC(unittest.TestCase):
         zs=stel_qsc.zs
 
         nfp = stel_qsc.nfp
-        stel_qic = QIC(rc, zs, B0=stel_qsc.B0, nfp = nfp, nphi=nphi)
-        p = stel_qic.frame_p_cartesian
-        q = stel_qic.frame_q_cartesian
-        n = stel_qic.normal_cartesian
-        b = stel_qic.binormal_cartesian
+        stel_QuICGen = QuICGen(rc, zs, B0=stel_qsc.B0, nfp = nfp, nphi=nphi)
+        p = stel_QuICGen.frame_p_cartesian
+        q = stel_QuICGen.frame_q_cartesian
+        n = stel_QuICGen.normal_cartesian
+        b = stel_QuICGen.binormal_cartesian
 
         X1c, Y1c, X1s, Y1s = get_centroid_X1_Y1(p, q, n, b, [X1cfs, X1sfs], [Y1cfs, Y1sfs])
 
-        stel_qic = QIC(rc, zs, X1c=X1c, Y1c=Y1c, B0=stel_qsc.B0, nfp = nfp, nphi = nphi, sigma0=stel_qsc.sigma0)
+        stel_QuICGen = QuICGen(rc, zs, X1c=X1c, Y1c=Y1c, B0=stel_qsc.B0, nfp = nfp, nphi = nphi, sigma0=stel_qsc.sigma0)
 
-        np.testing.assert_allclose(X1s, stel_qic.X1s)
-        np.testing.assert_allclose(Y1s, stel_qic.Y1s)
-        np.testing.assert_allclose(stel_qsc.curvature, stel_qic.curvature)
-        np.testing.assert_allclose(np.mean(stel_qic.B0), stel_qsc.B0)
-        np.testing.assert_allclose(np.mean(stel_qic.B1c) / np.min(stel_qic.B0), stel_qsc.etabar)
-        np.testing.assert_allclose(stel_qsc.iota, stel_qic.iota)
+        np.testing.assert_allclose(X1s, stel_QuICGen.X1s)
+        np.testing.assert_allclose(Y1s, stel_QuICGen.Y1s)
+        np.testing.assert_allclose(stel_qsc.curvature, stel_QuICGen.curvature)
+        np.testing.assert_allclose(np.mean(stel_QuICGen.B0), stel_qsc.B0)
+        np.testing.assert_allclose(np.mean(stel_QuICGen.B1c) / np.min(stel_QuICGen.B0), stel_qsc.etabar)
+        np.testing.assert_allclose(stel_qsc.iota, stel_QuICGen.iota)
     
     def test_precise_QH(self):
         nphi = 63
@@ -152,22 +152,22 @@ class QIC_v_QSC(unittest.TestCase):
         zs=stel_qsc.zs
 
         nfp = stel_qsc.nfp
-        stel_qic = QIC(rc, zs, B0=stel_qsc.B0, nfp = nfp, nphi=nphi)
-        p = stel_qic.frame_p_cartesian
-        q = stel_qic.frame_q_cartesian
-        n = stel_qic.normal_cartesian
-        b = stel_qic.binormal_cartesian
+        stel_QuICGen = QuICGen(rc, zs, B0=stel_qsc.B0, nfp = nfp, nphi=nphi)
+        p = stel_QuICGen.frame_p_cartesian
+        q = stel_QuICGen.frame_q_cartesian
+        n = stel_QuICGen.normal_cartesian
+        b = stel_QuICGen.binormal_cartesian
 
         X1c, Y1c, X1s, Y1s = get_centroid_X1_Y1(p, q, n, b, [X1cfs, X1sfs], [Y1cfs, Y1sfs])
 
-        stel_qic = QIC(rc, zs, X1c=X1c, Y1c=Y1c, B0=stel_qsc.B0, nfp = nfp, nphi = nphi, sigma0=stel_qsc.sigma0)
+        stel_QuICGen = QuICGen(rc, zs, X1c=X1c, Y1c=Y1c, B0=stel_qsc.B0, nfp = nfp, nphi = nphi, sigma0=stel_qsc.sigma0)
 
-        np.testing.assert_allclose(X1s, stel_qic.X1s, atol=atol)
-        np.testing.assert_allclose(Y1s, stel_qic.Y1s, atol=atol)
-        np.testing.assert_allclose(stel_qsc.curvature, stel_qic.curvature)
-        np.testing.assert_allclose(np.mean(stel_qic.B0), stel_qsc.B0)
-        np.testing.assert_allclose(np.mean(stel_qic.B1c) / np.min(stel_qic.B0), stel_qsc.etabar)
-        np.testing.assert_allclose(stel_qsc.iota, stel_qic.iota)
+        np.testing.assert_allclose(X1s, stel_QuICGen.X1s, atol=atol)
+        np.testing.assert_allclose(Y1s, stel_QuICGen.Y1s, atol=atol)
+        np.testing.assert_allclose(stel_qsc.curvature, stel_QuICGen.curvature)
+        np.testing.assert_allclose(np.mean(stel_QuICGen.B0), stel_qsc.B0)
+        np.testing.assert_allclose(np.mean(stel_QuICGen.B1c) / np.min(stel_QuICGen.B0), stel_qsc.etabar)
+        np.testing.assert_allclose(stel_qsc.iota, stel_QuICGen.iota)
 
         
           
