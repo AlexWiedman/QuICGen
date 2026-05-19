@@ -1,5 +1,5 @@
 import numpy as np
-from QIC.centroidFrame import get_FS_frame, get_Centroid_frame, get_kappa1_kappa2, centroid, get_kappa3
+from QuICGen.centroidFrame import get_FS_frame, get_Centroid_frame, get_kappa1_kappa2, centroid, get_kappa3
 import matplotlib.pyplot as plt
 import os
 from pathlib import Path

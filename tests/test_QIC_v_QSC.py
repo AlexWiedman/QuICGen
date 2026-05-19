@@ -5,13 +5,14 @@ Compare output from QICalculator to pyQSC.
 import unittest
 import numpy as np
 import logging
-from QIC.qic import QIC
-from QIC.centroidFrame import get_centroid_X1_Y1
+from QuICGen.quicgen import QIC
+from QuICGen.centroidFrame import get_centroid_X1_Y1
 from qsc.qsc import Qsc
 from qsc.plot import plot_axis
-from QIC.plot import plot_axis
-from QIC.to_vmec import to_vmec
-#from qsc.to_vmec import to_vmec
+from QuICGen.plot import plot_axis, plot
+from QuICGen.to_vmec import to_vmec
+# from qsc.to_vmec import to_vmec
+from QuICGen.to_vmec import to_vmec
 
 logger = logging.getLogger(__name__)
 
@@ -81,7 +82,6 @@ class QIC_v_QSC(unittest.TestCase):
         np.testing.assert_allclose(np.mean(stel_qic.B0), stel_qsc.B0)
         np.testing.assert_allclose(np.mean(stel_qic.B1c), stel_qsc.etabar)
         np.testing.assert_allclose(stel_qsc.iota, stel_qic.iota)
-        #to_vmec(stel_qic, "input.precise_QA")
 
     def test_sec_5_2(self):
         nphi = 63
@@ -169,7 +169,6 @@ class QIC_v_QSC(unittest.TestCase):
         np.testing.assert_allclose(np.mean(stel_qic.B1c) / np.min(stel_qic.B0), stel_qsc.etabar)
         np.testing.assert_allclose(stel_qsc.iota, stel_qic.iota)
 
-    def test_plunk_QI(self):
         
           
 

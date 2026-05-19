@@ -1,9 +1,9 @@
-from QIC import QIC
+from QuICGen import QIC
 from scipy.optimize import minimize, least_squares
 import numpy as np
 from Optimizable import B1c_hat_even_calc, B1s_hat_even_calc, elongation_constraints, iota_constraints, minimum_major_radius, B_variance_appx
 from StellConfig import StellConfig
-from QIC.plot import plot, plot_boundary, B_contour, B_fieldline
+from QuICGen.plot import plot, plot_boundary, B_contour, B_fieldline
 import time
 import matplotlib.pyplot as plt
 import os

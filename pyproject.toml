@@ -6,5 +6,5 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "QIC"
+name = "QuICGen"
 version = "0.1.0"

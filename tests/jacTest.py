@@ -1,5 +1,5 @@
-from QIC.r1calcFS import _residual, _jacobian
-from QIC.qic import QIC
+from QuICGen.r1calcFS import _residual, _jacobian
+from QICalculator_in_General_Frame.QuICGen.quicgen import QIC
 import numpy as np
 
 rc = [1, -0.3]

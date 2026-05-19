@@ -1,6 +1,6 @@
 import numpy as np
-from QIC.centroidFrame import get_FS_frame, get_Centroid_frame, get_kappa1_kappa2, centroid, get_kappa3
-from QIC.spectral_diff_matrix import spectral_diff_matrix
+from QuICGen.centroidFrame import get_FS_frame, get_Centroid_frame, get_kappa1_kappa2, centroid, get_kappa3
+from QuICGen.spectral_diff_matrix import spectral_diff_matrix
 import matplotlib.pyplot as plt
 import unittest
 

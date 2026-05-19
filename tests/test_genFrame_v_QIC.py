@@ -2,13 +2,13 @@
 Compare results of QICalculator to pyQIC
 """
 
-from QIC.qic import QIC as gf
-from QIC.centroidFrame import get_centroid_X1_Y1, get_FS_frame, get_r_vector
+from QICalculator_in_General_Frame.QuICGen.quicgen import QIC as gf
+from QuICGen.centroidFrame import get_centroid_X1_Y1, get_FS_frame, get_r_vector
 import unittest
 import numpy as np
 import logging
 from qic import Qic
-from QIC.plot import plot
+from QuICGen.plot import plot
 import matplotlib.pyplot as plt
 
 

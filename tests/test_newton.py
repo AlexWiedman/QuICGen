@@ -2,7 +2,7 @@
 
 import unittest
 import numpy as np
-from QIC.newtonMethod import newton
+from QuICGen.newtonMethod import newton
 
 class NewtonTests(unittest.TestCase):
 

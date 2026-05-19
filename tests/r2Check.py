@@ -1,9 +1,9 @@
 import numpy as np
 import logging
-from QIC.qic import QIC
-from QIC.centroidFrame import get_centroid_X1_Y1, get_centroid_X2_Y2
-from QIC.util import cylindrical_to_centroid
-from QIC.init_axis import init_axis
+from QICalculator_in_General_Frame.QuICGen.quicgen import QIC
+from QuICGen.centroidFrame import get_centroid_X1_Y1, get_centroid_X2_Y2
+from QuICGen.util import cylindrical_to_centroid
+from QuICGen.init_axis import init_axis
 from qsc.qsc import Qsc
 
 nfourier = 5

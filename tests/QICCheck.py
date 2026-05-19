@@ -5,10 +5,10 @@ Compare output from pyQIC (Name already taken, must rename) to pyQSC.
 import unittest
 import numpy as np
 import logging
-from QIC.qic import QIC
-from QIC.centroidFrame import get_centroid_X1_Y1
-from QIC.util import cylindrical_to_centroid
-from QIC.init_axis import init_axis
+from QuICGen.quicgen import QIC
+from QuICGen.centroidFrame import get_centroid_X1_Y1
+from QuICGen.util import cylindrical_to_centroid
+from QuICGen.init_axis import init_axis
 from qsc.qsc import Qsc
 
 logger = logging.getLogger(__name__)

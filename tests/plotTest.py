@@ -1,9 +1,9 @@
 # Just a quick QIC test
 
-from QIC.qic import QIC
+from QICalculator_in_General_Frame.QuICGen.quicgen import QIC
 import numpy as np
 import logging
-from QIC.plot import plot, B_fieldline, plot_boundary, plot_axis, B_contour
+from QuICGen.plot import plot, B_fieldline, plot_boundary, plot_axis, B_contour
 from QICCheck import test_sec_5_1, test_sec_5_2, test_sec_5_3
 from qsc.qsc import Qsc
 

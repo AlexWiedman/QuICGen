@@ -1,13 +1,13 @@
 # Just a quick QIC test
 
-from QIC.qic import QIC
+from QICalculator_in_General_Frame.QuICGen.quicgen import QIC
 import numpy as np
 import logging
-from QIC.plot import plot, B_fieldline, plot_boundary, plot_axis
+from QuICGen.plot import plot, B_fieldline, plot_boundary, plot_axis
 from qsc.qsc import Qsc
 import matplotlib.pyplot as plt
 import unittest
-from QIC.centroidFrame import get_centroid_X1_Y1
+from QuICGen.centroidFrame import get_centroid_X1_Y1
 
 #logging.basicConfig(level=logging.DEBUG)
 
