@@ -1,6 +1,6 @@
 import numpy as np
 
-class QIC():
+class QuICGen():
 
     from QuICGen.r1calcLambda import _residual, _jacobian, solve_sigma_equation, \
         _determine_helicity_centroid, r1_diagnostics, _determine_helicity_centroid
