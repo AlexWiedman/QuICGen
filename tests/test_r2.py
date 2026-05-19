@@ -5,7 +5,7 @@ Compare output from pyQIC (Name already taken, must rename) to pyQSC.
 import unittest
 import numpy as np
 import logging
-from QICalculator_in_General_Frame.QuICGen.quicgen import QIC
+from QuICGen.quicgen import QuICGen
 from QuICGen.centroidFrame import get_centroid_X1_Y1, get_centroid_X2_Y2
 from QuICGen.util import cylindrical_to_centroid
 from QuICGen.init_axis import init_axis
