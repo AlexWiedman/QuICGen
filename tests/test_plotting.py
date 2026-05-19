@@ -1,4 +1,4 @@
-# Just a quick QIC test
+# Plotting Test
 
 from QuICGen.quicgen import QuICGen
 import numpy as np
@@ -23,16 +23,16 @@ def r1sec5_1():
     zs=stel_qsc.zs
 
     nfp = stel_qsc.nfp
-    stel_qic = QIC(rc, zs, nfp = nfp, nphi=nphi)
-    p = stel_qic.frame_p_cartesian
-    q = stel_qic.frame_q_cartesian
-    n = stel_qic.normal_cartesian
-    b = stel_qic.binormal_cartesian
+    stel_QuICGen = QuICGen(rc, zs, nfp = nfp, nphi=nphi)
+    p = stel_QuICGen.frame_p_cartesian
+    q = stel_QuICGen.frame_q_cartesian
+    n = stel_QuICGen.normal_cartesian
+    b = stel_QuICGen.binormal_cartesian
 
     X1c, Y1c, X1s, Y1s = get_centroid_X1_Y1(p, q, n, b, [X1cfs, X1sfs], [Y1cfs, Y1sfs])
 
-    stel_qic = QIC(rc, zs, X1c=X1c, Y1c=Y1c, nfp = nfp, nphi = nphi, sigma0=0)
-    return stel_qic
+    stel_QuICGen = QuICGen(rc, zs, X1c=X1c, Y1c=Y1c, nfp = nfp, nphi = nphi, sigma0=0)
+    return stel_QuICGen
 
 class Plotting_Test(unittest.TestCase):
     def test_plot(self):
