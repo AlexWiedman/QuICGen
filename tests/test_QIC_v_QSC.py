@@ -5,7 +5,7 @@ Compare output from QICalculator to pyQSC.
 import unittest
 import numpy as np
 import logging
-from QuICGen.quicgen import QIC
+from QuICGen.quicgen import QuICGen
 from QuICGen.centroidFrame import get_centroid_X1_Y1
 from qsc.qsc import Qsc
 from qsc.plot import plot_axis
