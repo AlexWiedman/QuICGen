@@ -1,6 +1,6 @@
 import numpy as np
 import time
-from QuICGen.newtonMethod import newton
+from QIC.newtonMethod import newton
 """
 Solve the Near Axis Expansion to first order using the Lambda equation.
 """
@@ -111,8 +111,10 @@ def r1_diagnostics(self):
     self._determine_helicity_centroid()
     self.iota = self.iotaN + self.helicity * self.nfp
 
-    self.B1c = (self.X1c * self.k1 + self.Y1c * self.k2) * self.B0
-    self.B1s = (self.X1s * self.k1 + self.Y1s * self.k2) * self.B0
+
+
+    self.B1c = (self.X1c * self.k1 + self.Y1c * self.k2) * self.B0 #* self.sign_curvature_change
+    self.B1s = (self.X1s * self.k1 + self.Y1s * self.k2) * self.B0 #* self.sign_curvature_change
 
     if self.helicity == 0:
         self.X1s_untwisted = self.X1s
@@ -141,4 +143,3 @@ def r1_diagnostics(self):
 
     self.d_B0_d_varphi = np.matmul(self.d_d_varphi, self.B0)
     self.d_2_B0_d_varphi_2 = np.matmul(self.d_d_varphi, self.d_B0_d_varphi)
-
